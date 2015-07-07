@@ -1,0 +1,33 @@
+<html ng-app="myExpMgr">
+<head>
+	<title>Demo</title>
+	<script type="text/javascript" src="js/lib/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/controllers/app.js"></script>
+	<script type="text/javascript" src="js/controllers/entry.js"></script>
+	<script type="text/javascript" src="js/controllers/expenses.js"></script>
+	<script type="text/javascript" src="js/controllers/reports.js"></script>
+	<script type="text/javascript" src="js/services.js"></script>
+	<script type="text/javascript" src="js/lib/angular-resource.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+</head>
+<body>
+	<div class="container" ng-controller="AppCtrl">
+		<h1>MyExpMgr</h1>
+		<ul class="nav nav-pills">
+			<li ng-class="entryActive">
+				<a href="#/">Entry</a>
+			</li>
+			<li ng-class="expensesActive">
+				<a href="#/expenses" >Expenses</a>
+			</li>
+			<li ng-class="reportsActive">
+				<a href="#/reports" >Reports</a>
+			</li>
+		</ul>
+	
+		<div ng-view></div>
+	</div>
+</body>
+</html>
