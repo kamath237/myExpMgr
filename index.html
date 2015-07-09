@@ -1,6 +1,6 @@
 <html ng-app="myExpMgr">
 <head>
-	<title>Demo</title>
+	<title>MyExpMgr</title>
 	<script type="text/javascript" src="js/lib/angular.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/controllers/app.js"></script>
@@ -15,12 +15,13 @@
 <body>
 	<div class="container" ng-controller="AppCtrl">
 		<h1>MyExpMgr</h1>
+		
 		<ul class="nav nav-pills">
 			<li ng-class="entryActive">
 				<a href="#/">Entry</a>
 			</li>
 			<li ng-class="expensesActive">
-				<a href="#/expenses" >Expenses</a>
+				<a href="#/expenses" >Transactions</a>
 			</li>
 			<li ng-class="reportsActive">
 				<a href="#/reports" >Reports</a>

@@ -1,13 +1,22 @@
 <div>
 <h3>ENTRY</h3>
+<p>Current Balance : {{balance.currentBalance}}</p>
+<p>entries total : {{entries.length}}</p>
 <div ng-show="entry">{{entry}}</div>
-	<div ng-show="entryval">
+	<div ng-show="expEntry.value">
 
-	<input class="input-xlarge" ng-model="entryval"/>
-	<a href="" ng-click="doEntry(entryval)">Add Entry</a>
+	<input class="input-xlarge" ng-model="expEntry.value"/>
+
+   <select data-ng-model="expEntry.type" data-ng-options="e.type for e in expType"></select>
+
+   <input class="input-xlarge" ng-model="expEntry.particulars"/>
+
+	<b><a href="" ng-click="doEntry(expEntry, '+')">+</a></b>
+  <b><a href="" ng-click="doEntry(expEntry, '-')">-</a></b>
 </div>
 
 <div>
+ 
 <table style="width:100%" >
   <tr>
     <td>

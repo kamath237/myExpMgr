@@ -5,5 +5,13 @@ function AppCtrl ($scope) {
     $scope.reportsActive = '';
     $scope[type+'Active']='active';
   }
+$scope.entries = [
+  ];
 
+$scope.balance = {
+openingBalance :1000,
+currentBalance :1000
+
+
+};
 }

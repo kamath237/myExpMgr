@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="dropdown">
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJs Droplown List</title>
+    <script  src="http://code.angularjs.org/1.2.14/angular.js" ></script>
+    <script>
+       var app = angular.module('dropdown', []);
+        app.controller('dropdownController', function ($scope) {
+            $scope.employee = {
+                name: "Anil",
+                details: {
+                    id: 3,
+                    type: "HR",
+                    name: "BuckChodi"
+                }
+            };
+
+            $scope.employees = [{
+                id: 1,
+                type: "HR",
+                name: "Time Pass"
+            }, {
+                id: 2,
+                type: "IT",
+                name: "lazy"
+            }, {
+                id: 3,
+                type: "DEV",
+                name: "Work Hard"
+            }, {
+                id: 4,
+                type: "MGMT",
+                name: "Injoye with HR"
+            }];
+        });
+    </script>
+</head>
+
+<body ng-controller="dropdownController">
+    Please Select Dropdown 
+    <select data-ng-model="employee.details" data-ng-options="e.name +' [' + e.type + ']' for e in employees"></select>
+</body>
+</html>
