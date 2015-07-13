@@ -3,7 +3,7 @@
 *
 * Description
 */
-angular.module('myExpMgr', []).config(myExpMgrRouter);
+angular.module('myExpMgr', ["firebase"]).config(myExpMgrRouter);
 
 function myExpMgrRouter ($routeProvider) {
 	$routeProvider 
