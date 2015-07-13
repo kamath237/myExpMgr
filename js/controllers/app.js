@@ -1,11 +1,11 @@
-function AppCtrl ($scope, $firebaseArray, $firebaseObject) {
+function AppCtrl ($scope, $firebaseArray, $firebaseObject, heads) {
   $scope.setActive = function(type){
     $scope.entryActive = '';
     $scope.expensesActive = '';
     $scope.reportsActive = '';
     $scope[type+'Active']='active';
   }
-// $scope.currentBalance = '1550';
+
 var curBalRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com/CURBAL");
  // download the data into a local object
    var syncObject = $firebaseObject(curBalRef);
@@ -25,19 +25,21 @@ var transactionsRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com
   
   $scope.transactions = $firebaseArray(transactionsRef);
 
+  $scope.expType = heads;
 
-  var expTypeRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com/HEADS");
-  // download the data into a local object
-  // $scope.expType = $firebaseArray(expTypeRef);
 
-  expTypeRef.on("value", function(snapshot) {
-    // This isn't going to show up in the DOM immediately, because
-    // Angular does not know we have changed this in memory.
-    // $scope.data = snapshot.val();
+  // var expTypeRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com/HEADS");
+  // // download the data into a local object
+  //  // $scope.expType = $firebaseArray(expTypeRef);
 
-    // To fix this, we can use $scope.$apply() to notify Angular that a change occurred.
-    $scope.$apply(function() {
-      $scope.expType = snapshot.val();
-    });
-  });
+  // expTypeRef.on("value", function(snapshot) {
+  //   // This isn't going to show up in the DOM immediately, because
+  //   // Angular does not know we have changed this in memory.
+  //   // $scope.data = snapshot.val();
+
+  //   // To fix this, we can use $scope.$apply() to notify Angular that a change occurred.
+  //   $scope.$apply(function() {
+  //     $scope.expType = snapshot.val();
+  //   });
+  // });
 }

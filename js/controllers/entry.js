@@ -49,23 +49,29 @@ function EntryCtrl ($scope, $firebaseArray) {
 
     
 
-    // $scope.expType = [{
-    //             id: 1,
-    //             type: "HOMEEXP",
-    //             name: "Home Expenses"
-    //         }, {
-    //             id: 2,
-    //             type: "TRAVEL",
-    //             name: "Travel expenses"
-    //         }, {
-    //             id: 3,
-    //             type: "EAT",
-    //             name: "Eat Out expenses"
-    //         }, {
-    //             id: 4,
-    //             type: "MEDICINE",
-    //             name: "Medical expenses"
-    //         }];
+    //ADD NEW CATEGORY
+    $scope.addNew = false;
+    $scope.checkAddNew = function() {
+    if($scope.expEntry.type === "Add New") {
+      $scope.addNew = true;
+    } else {
+      $scope.addNew = false;
+    }
+  }
+  
+  $scope.addToDropDown = function(label, value) {
+    var ref = new Firebase("https://dazzling-inferno-6139.firebaseio.com/HEADS");
+    // download the data into a local object
+    $scope.headlist = $firebaseArray(ref);
+    $scope.expType.$add({name:label, type:value});
+            $scope.addNew = false;
+      $scope.expEntry.type = value;
+
+    
+     // $scope.newOption = {name:label, type:value};
+    // $scope.myNumbers.push($scope.newOption);
+    // $scope.expType.$add({name:label, type:value});
+  }
         
   
 }

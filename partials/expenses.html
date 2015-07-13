@@ -1,5 +1,5 @@
 <H3>TRANSACTIONS</H3>
-{{transactions}}
+
 
 <table ng-show="transactions" class="table">
 <thead>
@@ -19,7 +19,7 @@
 {{transaction.particulars}}
 </td>
 <td>
-{{transaction.type.type}}
+{{transaction.type}}
 </td>
 <td>
 {{transaction.credit}}
@@ -28,7 +28,7 @@
 {{transaction.debit}}
 </td>
 <td>
-{{transaction.balance}}
+{{transaction.balance.value}}
 </td>
 
 </tr>

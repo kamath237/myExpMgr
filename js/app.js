@@ -3,7 +3,17 @@
 *
 * Description
 */
-angular.module('myExpMgr', ["firebase"]).config(myExpMgrRouter);
+var app = angular.module('myExpMgr', ["firebase"]).config(myExpMgrRouter);
+ 
+
+app.factory("heads", ["$firebaseArray",
+  function($firebaseArray) {
+    var ref = new Firebase("https://dazzling-inferno-6139.firebaseio.com/HEADS");
+	return $firebaseArray(ref);
+  }
+]);
+
+
 
 function myExpMgrRouter ($routeProvider) {
 	$routeProvider 
