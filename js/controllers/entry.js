@@ -1,4 +1,22 @@
-function EntryCtrl ($scope, $firebaseArray) {
+function EntryCtrl ($scope, $firebaseArray, $firebaseObject, $firebase) {
+  
+  var expTypeRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com/HEADS");
+  var syncObject = $firebaseObject(expTypeRef);
+  syncObject.$bindTo($scope, "expTypeHeads");
+ // var expTypeRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com/HEADS");
+  // // download the data into a local object
+  //  // $scope.expType = $firebaseArray(expTypeRef);
+
+  expTypeRef.on("value", function(snapshot) {
+    // This isn't going to show up in the DOM immediately, because
+    // Angular does not know we have changed this in memory.
+    // To fix this, we can use $scope.$apply() to notify Angular that a change occurred.
+    $scope.$apply(function() {
+      $scope.expTypeHeads = snapshot.val();
+    });
+  });
+
+
   $scope.setActive('entry');
 
   $scope.expEntry = {
@@ -12,23 +30,10 @@ function EntryCtrl ($scope, $firebaseArray) {
             };
 
   
-  
-
-  // $scope.setEntry = function(code){
-  //   if (code == '-') {
-  //     $scope.entryval = $scope.entryval.substring(0,$scope.entryval.length-1)
-  //   }else{ 
-  //     $scope.entryval = $scope.entryval+code;
-  //   };
-  // };
-
-  // $scope.doEntry = function(value){
-  //   $scope.entry = value;
-  //   $scope.entryval='';
-  // }
-
-
   $scope.doEntry = function(value, crdr){
+    if($scope.currentBalance.value == null){
+      $scope.currentBalance.value = +0;
+    }
       if (crdr == '-') {
         $scope.currentBalance.value = $scope.currentBalance.value - value.value;
         value.debit = value.value;
@@ -59,6 +64,7 @@ function EntryCtrl ($scope, $firebaseArray) {
     }
   }
   
+  // called on click of add to add the new value to db
   $scope.addToDropDown = function(label, value) {
     var ref = new Firebase("https://dazzling-inferno-6139.firebaseio.com/HEADS");
     // download the data into a local object

@@ -6,16 +6,22 @@ function AppCtrl ($scope, $firebaseArray, $firebaseObject, heads) {
     $scope[type+'Active']='active';
   }
 
-var curBalRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com/CURBAL");
- // download the data into a local object
-   var syncObject = $firebaseObject(curBalRef);
-  // $scope.currentBalance = $firebaseObject(curBalRef);
+  var curBalRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com/CURBAL");
+  // download the data into a local object
+  var syncCurBalObject = $firebaseObject(curBalRef);
   // synchronize the object with a three-way data binding
-  // click on `index.html` above to see it used in the DOM!
-  syncObject.$bindTo($scope, "currentBalance");
+  syncCurBalObject.$bindTo($scope, "currentBalance");
   
-  $scope.entries = [
-  ];
+  curBalRef.on("value", function(snapshot) {
+    // This isn't going to show up in the DOM immediately, because
+    // Angular does not know we have changed this in memory.
+    // To fix this, we can use $scope.$apply() to notify Angular that a change occurred.
+    $scope.$apply(function() {
+      $scope.currentBalance = snapshot.val();
+    });
+  });
+
+  $scope.entries = [];
 
 
 

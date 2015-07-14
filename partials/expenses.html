@@ -1,6 +1,9 @@
 <H3>TRANSACTIONS</H3>
 
-
+<div class="controls controls-row">
+	<input type="text" class="input-small" placeholder="Date" ng-model="search.date"/>
+	<input type="text" class="input-small" placeholder="Type" ng-model="search.type"/>
+</div>
 <table ng-show="transactions" class="table">
 <thead>
 <tr>
@@ -13,7 +16,7 @@
 </tr>
 </thead>
 <tbody>
-<tr ng-repeat="transaction in transactions ">
+<tr ng-repeat="(key,transaction) in transactions | filter:search ">
 <td>{{transaction.date}}</td>
 <td>
 {{transaction.particulars}}
@@ -30,7 +33,9 @@
 <td>
 {{transaction.balance.value}}
 </td>
-
+<td>
+<a ng-click="deleteEntry(key)">X</a>
+</td>
 </tr>
 </tbody>
 </table>

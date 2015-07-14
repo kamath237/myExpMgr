@@ -10,8 +10,14 @@
    <select data-ng-model="expEntry.type" ng-change="checkAddNew()">
     <option value="" disabled selected>Select your option</option>
     <option value="Add New">+Add New</option>
-    <option ng-repeat="e in expType">{{e.type}}</option>
+    <option ng-repeat="e in expTypeHeads">{{e.type}}</option>
    </select>
+   
+   <!-- <select data-ng-model="expEntry.type" ng-change="checkAddNew()">
+    <option value="" disabled selected>Select your option</option>
+    <option value="Add New">+Add New</option>
+    <option ng-repeat="e in expType">{{e.type}}</option>
+   </select> -->
    <div ng-show="addNew">
     <input type="text" ng-model="label" /><br>
     <input type="text" ng-model="value" /><br>
