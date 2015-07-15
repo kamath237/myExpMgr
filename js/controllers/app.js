@@ -10,9 +10,9 @@ function AppCtrl ($scope, $firebaseArray, $firebaseObject, heads) {
 var connectedRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com/.info/connected");
 connectedRef.on("value", function(snap) {
   if (snap.val() === true) {
-    alert("connected");
+    $scope.connectionStatus="connected";
   } else {
-    alert("not connected");
+    $scope.connectionStatus="not connected";
   }
 });
 

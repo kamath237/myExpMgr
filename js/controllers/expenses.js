@@ -11,6 +11,15 @@ var list = $firebaseArray(ref);
 	});
 }
 
+ $scope.edit = false;
+$scope.editEntry = function(){
+  if(Boolean($scope.edit) === false){ 
+    $scope.edit = true;
+  }else{
+    $scope.edit = false;
+  }
+   
+}
 
 
 $scope.saveEntry = function(item){
