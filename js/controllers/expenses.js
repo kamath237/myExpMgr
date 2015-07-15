@@ -1,13 +1,20 @@
 function ExpensesCtrl ($scope, $firebaseArray) {
   $scope.setActive('expenses');
 
+var ref = new Firebase("https://dazzling-inferno-6139.firebaseio.com/TRANSACTIONS");
+var list = $firebaseArray(ref);
   $scope.deleteEntry = function(key){
-  	var ref = new Firebase("https://dazzling-inferno-6139.firebaseio.com/TRANSACTIONS");
- 	var list = $firebaseArray(ref);
+  
 	var item = $scope.transactions[key];
 	$scope.transactions.$remove(item).then(function(ref) {
   	ref.key() === item.$id; // true
 	});
+}
+
+
+
+$scope.saveEntry = function(item){
+  $scope.transactions.$save(item);
 }
 
   app.filter("myfilter", function() {

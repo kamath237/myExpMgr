@@ -17,18 +17,18 @@
 </thead>
 <tbody>
 <tr ng-repeat="(key,transaction) in transactions | filter:search ">
-<td>{{transaction.date}}</td>
+<td><input type="text" ng-model="transaction.date" ng-change="saveEntry(transaction)"/></td>
 <td>
-{{transaction.particulars}}
+<input type="text" ng-model="transaction.particulars" ng-change="saveEntry(transaction)"/>
 </td>
 <td>
-{{transaction.type}}
+<input type="text" ng-model="transaction.type" ng-change="saveEntry(transaction)"/>
 </td>
 <td>
-{{transaction.credit}}
+<input type="text" ng-model="transaction.credit" ng-change="saveEntry(transaction)"/>
 </td>
 <td>
-{{transaction.debit}}
+<input type="text" ng-model="transaction.debit" ng-change="saveEntry(transaction)"/>
 </td>
 <td>
 {{transaction.balance.value}}

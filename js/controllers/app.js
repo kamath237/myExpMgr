@@ -6,6 +6,17 @@ function AppCtrl ($scope, $firebaseArray, $firebaseObject, heads) {
     $scope[type+'Active']='active';
   }
 
+
+var connectedRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com/.info/connected");
+connectedRef.on("value", function(snap) {
+  if (snap.val() === true) {
+    alert("connected");
+  } else {
+    alert("not connected");
+  }
+});
+
+
   var curBalRef = new Firebase("https://dazzling-inferno-6139.firebaseio.com/CURBAL");
   // download the data into a local object
   var syncCurBalObject = $firebaseObject(curBalRef);

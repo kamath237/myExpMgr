@@ -5,7 +5,7 @@
 <div >  
    <input class="input-xlarge"  type="date" ng-model="expEntry.date" placeholder="Date">
    <br>
-   <input class="input-xlarge" ng-model="expEntry.value" placeholder="value"/>
+   <input type="number" ng-model="expEntry.value" placeholder="value"/>
    <br><br>
    <select data-ng-model="expEntry.type" ng-change="checkAddNew()">
     <option value="" disabled selected>Select your option</option>
